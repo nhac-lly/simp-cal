@@ -11,3 +11,41 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.app {
+  max-height: 800px;
+  max-width: 600px;
+  border: 2px solid black;
+}
+
+.input {
+  background-color: black;
+  color: white;
+  height: 80px;
+  width: 100%;
+  text-align: center;
+  font-size: 50px;
+}
+
+.pads {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.pads > * {
+  height: 80px;
+  font-size: 50px;
+}
+
+.pads .blue {
+  background-color: lightblue;
+  color: white;
+}
+
+.pads .red {
+  background-color: lightcoral;
+  color: white;
+}
