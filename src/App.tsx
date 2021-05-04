@@ -16,11 +16,7 @@ const initialState: State = {
 const calReducer = (state: State, action: { type: string; payload: State; }) => {
   switch (action.type) {
     case 'OPERATE':
-      return {
-        inputData: action.payload.inputData,
-        lastData: action.payload.lastData,
-        operator: action.payload.operator,
-      }
+      return { ...action.payload }
     default:
       return state;
   }
@@ -31,14 +27,8 @@ const App = () => {
   console.log(state);
   const { inputData, lastData, operator } = state;
   const addToInput = (key: string | number) => dispatch({ type: 'OPERATE', payload: { ...state, inputData: inputData + key }});
-  const addZero = (key: number) => {
-    if (inputData === '') return;
-    addToInput(key);
-  };
-  const addPoint = (key: string) => {
-    if ((/\./).test(inputData)) return;
-    addToInput(key);
-  };
+  const addZero = (key: number) => {!(inputData === '') && addToInput(key)};
+  const addPoint = (key: string) => {!((/\./).test(inputData)) && addToInput(key)};
   const allClear = () => dispatch({ type: 'OPERATE', payload: { inputData: '', lastData: '' }});
   const handleClear = () => dispatch({ type: 'OPERATE', payload: { inputData: '' }});
   const handleOperate = (key: string) => dispatch({ type: 'OPERATE', payload: { lastData: inputData, inputData: '', operator: key }});
@@ -64,11 +54,7 @@ const App = () => {
     allClear();
     dispatch({ type: 'OPERATE', payload: { inputData: result.toString() }});
   };
-  const changePolarity = () => {
-    const data = +(inputData);
-    const changed = -data;
-    dispatch({ type: 'OPERATE', payload: { inputData: changed.toString() }});
-  };
+  const changePolarity = () => dispatch({ type: 'OPERATE', payload: { inputData: (-(+(inputData))).toString() }});
 
   return (
     <div className="app">
