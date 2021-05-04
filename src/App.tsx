@@ -31,7 +31,7 @@ const App = () => {
   const addPoint = (key: string) => {!((/\./).test(inputData)) && addToInput(key)};
   const allClear = () => dispatch({ type: 'OPERATE', payload: { inputData: '', lastData: '' }});
   const handleClear = () => dispatch({ type: 'OPERATE', payload: { inputData: '' }});
-  const handleOperate = (key: string) => dispatch({ type: 'OPERATE', payload: { lastData: inputData, inputData: '', operator: key }});
+  const handleOperate = (key: string) => dispatch({ type: 'OPERATE', payload: { lastData: inputData || lastData , inputData: '', operator: key }});
   const handleDelete = () => dispatch({ type: 'OPERATE', payload: { inputData: inputData.substring(0, inputData.length - 1)}});
   const handleCalculate = () => {
     let result: number;
