@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import * as key from './eNum';
+import { key } from './eNum';
 
 interface State {
   inputData?: string,
