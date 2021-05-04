@@ -58,7 +58,7 @@ const App = () => {
 
   return (
     <div className="app">
-        <input className="input" type="text" value={inputData} />
+        <input className="input" type="text" defaultValue={inputData} />
       <div className="pads">
         <button onClick={allClear} className="blue" >{key.AC}</button>
         <button onClick={handleClear} className="blue" >{key.C}</button>
